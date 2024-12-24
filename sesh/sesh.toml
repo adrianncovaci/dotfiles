@@ -1,0 +1,27 @@
+#import = ["~/.config/sesh/configs/nu-sesh.toml"]
+
+[default_session]
+startup_command = "nvim +GoToFile"
+
+# TODO: potential feature ideas
+# [[session]]
+# name = "session"
+# path = "~/path/to/session"
+# startup_script = "~/git_repos/dotfiles/sesh/bin/spotify.sh"
+# detached = true # never attach to this session, just create it in the background
+# tmuxp = "~/.config/tmux/tmuxp/joshmedeski.com.yml"
+# tmuxinator = "~/.config/tmux/tmuxinator/joshmedeski.com.yml"
+#
+
+[[session]]
+name = "wingman_spirit"
+path = "~/Documents/git/wingman.modules/wingman.spirit"
+startup_script = "~/.config/sesh/scripts/wingman.spirit"
+
+[[session]]
+name = "dumps_replayer"
+path = "~/Documents/git/wingman.modules/wingman.dumps.replay/"
+
+[[session]]
+name = "wingman_cloud"
+path = "~/Documents/git/wingman.modules/wingman.cloud/"

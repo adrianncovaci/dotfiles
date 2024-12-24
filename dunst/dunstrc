@@ -1,0 +1,19 @@
+[global]
+    # Larger font
+    font = Monospace 20 
+    
+    # Notification size
+    width = 600
+    height = 300
+    
+    # Position (from top-right corner)
+    origin = top-left
+    offset = 20x50
+    
+    # Make it more visible
+    frame_width = 3
+    frame_color = "#aaaaaa"
+    
+    # Formatting
+    markup = full
+    format = "<b>%s</b>\n%b"
