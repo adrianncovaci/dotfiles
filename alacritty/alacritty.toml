@@ -1,0 +1,92 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/xterm.toml"
+]
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "PasteSelection"
+key = "Insert"
+mods = "Shift"
+
+[[keyboard.bindings]]
+action = "ResetFontSize"
+key = "Key0"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Equals"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "Plus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "Minus"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "Paste"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Copy"
+
+[[keyboard.bindings]]
+action = "ClearLogNotice"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageUp"
+key = "U"
+mode = "~Alt"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollPageDown"
+key = "D"
+mode = "~Alt"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollToTop"
+key = "T"
+mode = "~Alt"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ScrollToBottom"
+key = "B"
+mode = "~Alt"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "LBracket"
+mods = "Control"
+
+[terminal.shell]
+program = "/bin/nu"
+
+[font]
+size = 12.0
