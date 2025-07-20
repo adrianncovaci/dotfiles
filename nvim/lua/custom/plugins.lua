@@ -223,6 +223,31 @@ local plugins = {
 			},
 		},
 	},
+	{
+		"olimorris/codecompanion.nvim",
+		opts = {},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		lazy = false,
+		config = function()
+			require("codecompanion").setup({
+				strategies = {
+					chat = {
+						adapter = "anthropic",
+					},
+					inline = {
+						adapter = "anthropic",
+					},
+				},
+			})
+		end,
+	},
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		ft = { "markdown", "codecompanion" },
+	},
 
 	-- To make a plugin not be loaded
 	-- {
