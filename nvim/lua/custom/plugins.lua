@@ -71,6 +71,9 @@ local plugins = {
 			"akinsho/toggleterm.nvim",
 		},
 		config = function()
+			local on_attach = require("plugins.configs.lspconfig").on_attach
+			local capabilities = require("plugins.configs.lspconfig").capabilities
+
 			vim.g.rustaceanvim = {
 				tools = {
 					executor = "toggleterm",
@@ -82,11 +85,14 @@ local plugins = {
 					},
 				},
 				server = {
-					on_attach = function(client, bufnr)
-						require("plugins.configs.lspconfig").on_attach(client, bufnr)
-					end,
+					on_attach = on_attach,
+					capabilities = capabilities,
 					default_settings = {
 						["rust-analyzer"] = {
+							assist = {
+								importMergeBehavior = "last",
+								importPrefix = "by_self",
+							},
 							cargo = {
 								allFeatures = true,
 								loadOutDirsFromCheck = true,
@@ -99,6 +105,11 @@ local plugins = {
 							},
 							procMacro = {
 								enable = true,
+								ignored = {
+									leptos_macro = {
+										"server",
+									},
+								},
 							},
 							inlayHints = {
 								lifetimeElisionHints = {
@@ -117,7 +128,6 @@ local plugins = {
 				},
 			}
 
-			-- Ensure diagnostics are enabled and configured
 			vim.diagnostic.config({
 				virtual_text = true,
 				signs = true,
@@ -247,6 +257,36 @@ local plugins = {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		ft = { "markdown", "codecompanion" },
+	},
+	{
+		"mozanunal/sllm.nvim",
+		dependencies = {
+			"echasnovski/mini.notify",
+			"echasnovski/mini.pick",
+		},
+		config = function()
+			require("sllm").setup({
+				llm_cmd = "llm",
+				default_model = "openrouter/anthropic/claude-sonnet-4",
+				show_usage = true, -- append usage stats to responses
+				on_start_new_chat = true, -- start fresh chat on setup
+				reset_ctx_each_prompt = true, -- clear file context each ask
+				window_type = "vertical", -- Default. Options: "vertical", "horizontal", "float"
+				-- function for item selection (like vim.ui.select)
+				pick_func = require("mini.pick").ui_select,
+				-- function for notifications (like vim.notify)
+				notify_func = require("mini.notify").make_notify(),
+				-- function for inputs (like vim.ui.input)
+				input_func = vim.ui.input,
+				-- See the "Customizing Keymaps" section for more details
+				keymaps = {
+					-- Disable a default keymap
+					add_url_to_ctx = false,
+					-- Other keymaps will use their default values
+				},
+			})
+		end,
+		lazy = false,
 	},
 
 	-- To make a plugin not be loaded
