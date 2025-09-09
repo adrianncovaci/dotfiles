@@ -27,10 +27,6 @@ name = "wingman_cloud"
 path = "~/Documents/git/wingman_modules/wingman_cloud/"
 
 [[session]]
-name = "mantiq_webapp_utils"
-path = "~/Documents/git/intranet_modules/mantiq_webapp_utils/"
-
-[[session]]
 name = "dotfiles"
 path = "~/.config/"
 
@@ -59,5 +55,5 @@ name = "erp"
 path = "/home/adrian/Documents/git/intranet_modules/erp"
 
 [[session]]
-name = "mantiq_types"
-path = "/home/adrian/Documents/git/intranet_modules/mantiq_types"
+name = "mantiq_utils"
+path = "/home/adrian/Documents/git/intranet_modules/mantiq_utils"
