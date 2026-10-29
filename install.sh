@@ -68,3 +68,9 @@ if [ ! -d "$plug" ]; then
   git clone -q --depth 1 https://github.com/zsh-users/zsh-autosuggestions "$plug"
   echo "cloned  zsh-autosuggestions"
 fi
+
+# rust: rustup is per-user (README), so only add the components editors need
+if command -v rustup >/dev/null; then
+  rustup component add rust-analyzer rust-src clippy rustfmt >/dev/null
+  echo "ok      rustup components (rust-analyzer, rust-src, clippy, rustfmt)"
+fi
