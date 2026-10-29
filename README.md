@@ -17,6 +17,7 @@ chsh -s "$(command -v zsh)"                   # log out and back in
 ```
 
 First `nvim` run installs plugins; `:Mason` installs the language servers.
+Re-run `install.sh` after `nix profile add` so it can set the Claude Code status line (needs jq).
 
 ## Day to day
 

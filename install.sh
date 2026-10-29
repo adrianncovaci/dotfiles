@@ -33,6 +33,20 @@ link tmux          "$CFG/tmux"
 link sesh          "$CFG/sesh"
 link delta         "$CFG/delta"
 link starship.toml "$CFG/starship.toml"
+link claude/statusline.sh "$HOME/.claude/statusline.sh"
+
+# Claude Code rewrites settings.json itself, so merge our key in instead of linking it
+settings="$HOME/.claude/settings.json"
+jq="$(command -v jq || echo "$HOME/.nix-profile/bin/jq")"
+if [ -x "$jq" ]; then
+  [ -s "$settings" ] || echo '{}' > "$settings"
+  tmp="$(mktemp)"
+  "$jq" '.statusLine = {type: "command", command: "~/.claude/statusline.sh", refreshInterval: 30}' "$settings" > "$tmp"
+  mv "$tmp" "$settings"
+  echo "set     statusLine in $settings"
+else
+  echo "skip    statusLine: no jq yet (run 'nix profile add ~/dotfiles', then re-run this)"
+fi
 
 if [ "$(uname)" = Darwin ]; then
   link alacritty "$CFG/alacritty"
