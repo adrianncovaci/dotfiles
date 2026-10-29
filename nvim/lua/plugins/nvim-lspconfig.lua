@@ -125,10 +125,8 @@ return {
       underline = true,
       update_in_insert = false,
       severity_sort = true,
-      virtual_text = { spacing = 2, prefix = "●", source = "if_many" },
-      -- full multi-line diagnostics on the cursor line: what makes long
-      -- rustc/clippy messages readable without opening a float
-      virtual_lines = { current_line = true },
+      virtual_text = false,
+      virtual_lines = false,
       signs = {
         text = {
           [severity.ERROR] = "󰅚 ",
@@ -137,7 +135,16 @@ return {
           [severity.HINT] = "󰌶 ",
         },
       },
-      float = { border = "rounded", source = "if_many", header = "" },
+      float = { border = "rounded", source = true, header = "", scope = "line" },
     }
+
+    -- Show diagnostics in float with gl
+    vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Show diagnostic float" })
+    vim.keymap.set("n", "[d", function()
+      vim.diagnostic.goto_prev { float = true }
+    end, { desc = "Previous diagnostic" })
+    vim.keymap.set("n", "]d", function()
+      vim.diagnostic.goto_next { float = true }
+    end, { desc = "Next diagnostic" })
   end,
 }
