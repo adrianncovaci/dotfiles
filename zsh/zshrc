@@ -1,0 +1,36 @@
+# Shared zsh config, linked to ~/.zshrc by install.sh.
+# Machine-specific PATHs and tools go in ~/.zshrc.local (not tracked).
+
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="ys"
+plugins=(zsh-autosuggestions vi-mode)
+
+VI_MODE_SET_CURSOR=true
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+MODE_INDICATOR="%F{white}+%f"
+INSERT_MODE_INDICATOR="%F{yellow}+%f"
+
+if [ -d "$ZSH" ]; then
+  source "$ZSH/oh-my-zsh.sh"
+else
+  echo "oh-my-zsh missing: run ~/dotfiles/install.sh" >&2
+fi
+
+bindkey -M viins jj vi-cmd-mode
+
+export EDITOR=nvim
+export PATH="$HOME/.local/bin:$PATH"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
+
+alias tma="tmux attach-session"
+alias tmk="tmux kill-server"
+
+s() {
+    local session
+    session=$(sesh list -i | gum filter --limit 1 --fuzzy --no-sort --placeholder "Pick a sesh" --prompt "⚡") || return
+    sesh connect "$session"
+}
+
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
