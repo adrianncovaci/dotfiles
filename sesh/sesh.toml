@@ -1,5 +1,5 @@
 [default_session]
-startup_command = "nvim +GoToFile"
+startup_command = "nvim +'Telescope find_files'"
 
 # TODO: potential feature ideas
 # [[session]]
