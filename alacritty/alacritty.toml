@@ -85,9 +85,6 @@ action = "ToggleViMode"
 key = "LBracket"
 mods = "Control"
 
-[terminal.shell]
-program = "/bin/nu"
-
 [font]
 size = 14.0
 

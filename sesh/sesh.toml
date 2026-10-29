@@ -1,5 +1,3 @@
-#import = ["~/.config/sesh/configs/nu-sesh.toml"]
-
 [default_session]
 startup_command = "nvim +GoToFile"
 
