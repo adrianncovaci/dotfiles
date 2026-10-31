@@ -25,6 +25,7 @@
             jq htop gh
           ] ++ lib.optionals stdenv.isLinux [
             gcc # treesitter compiles parsers; macOS uses the Xcode clang
+            lldb # debugger (rust-lldb, codelldb); macOS has the Xcode one
           ];
         };
       });
